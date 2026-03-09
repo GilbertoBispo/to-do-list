@@ -15,9 +15,13 @@
     <main>
         <!-- div para adicionar tarefas -->
         <div class="adicionar-tarefa">
-            <input type="text" name="tarefa" placeholder="Nome da tarefa">
-            <input type="text" name="descrição" placeholder="Descrição">
-            <button type="submit">Criar</button>
+            <!-- precisa do atributo "method" com valor "POST", e o URL do "action" precisa ser igual à URL indicada na rota POST do backend -->
+            <form action="/" method="POST">
+                <!-- os atributos "name" precisam condizer com os atributos do backend -->
+                <input type="text" name="tarefa" placeholder="Nome da tarefa">
+                <input type="text" name="descricao" placeholder="Descrição">
+                <input type="submit" value="Enviar">
+            </form>
         </div> <!-- adicionar-tarefa -->
 
         <!-- div que exibe todas as tarefas -->
