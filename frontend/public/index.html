@@ -8,7 +8,27 @@
     <title>Lista de Tarefas</title>
 </head>
 <body>
-    <h1>olá, mundo</h1>
+    <header>
+        <h1>Lista de Tarefas</h1>
+    </header>
+
+    <main>
+        <!-- div para adicionar tarefas -->
+        <div class="adicionar-tarefa">
+            <input type="text" name="tarefa" placeholder="Nome da tarefa">
+            <input type="text" name="descrição" placeholder="Descrição">
+            <button type="submit">Criar</button>
+        </div> <!-- adicionar-tarefa -->
+
+        <!-- div que exibe todas as tarefas -->
+        <div class="lista-tarefas">
+            <ul>
+                <li>Tarefa 1</li>
+                <li>Tarefa 2</li>
+                <li>Tarefa 3</li>
+            </ul>
+        </div> <!-- lista-tarefas -->
+    </main>
 
     <script
         src="https://code.jquery.com/jquery-4.0.0.js"
