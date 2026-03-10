@@ -1,6 +1,35 @@
 // importação do express e do path
 import express from "express";
 import path from "path";
+// importação do objeto "Client" da biblioteca "pg"
+import { Client } from "pg";
+// importação do .env
+import "dotenv/config";
+
+// criamos uma instância de Client e passamos um objeto dentro com os atributos "host", "user", "port" (que podem ser vistos nas propriedades do pgAdmin), "password" e "database". Essas informações devem ser definidas no .env
+const connection = new Client({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    port: process.env.DB_PORT,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE
+});
+
+// esse método conecta nosso projeto ao banco de dados
+connection.connect().then(() => { console.log("bando de dados conectado!") });
+
+// aqui nós fazemos um "query" (uma "consulta") no banco de dados que especificamos usando o método .query(). O primeiro atributo é o comando SQL, o segundo é uma callback que possui dois argumentos: "err" e "res", que representam os estados de erro e sucesso da tarefa (eles precisam ser especificados nessa ordem).
+
+function queryTasks() {
+    connection.query(`SELECT * FROM ${process.env.DB_TABLE_NAME}`, (err, res) => {
+    try {
+        // aqui nós acessamos a resposta e utilizamos o método "rows"
+        console.log(res.rows);
+    } catch {
+        console.log(`Não foi possível extrair as informações. ${err}`);
+    }
+    });
+}
 
 // instância do express
 const app = express();
@@ -21,8 +50,18 @@ app.use("/", express.static(path.join(import.meta.dirname, "../", "frontend", "p
 app.post("/", (req, res) => {
     // esse destructuring precisa ter as variáveis iguais aos valores dos atributos "name" nos <input> do HTML
     let { tarefa, descricao } = req.body;
-    console.log(tarefa, descricao);
-    res.send("Dados recebidos");
+    // esses símbolos de "$" são placeholders, úteis para segurança contra SQL Injection
+    const inserir = `INSERT INTO ${process.env.DB_TABLE_NAME} (titulo, descricao) VALUES ($1, $2) RETURNING *`;
+    connection.query(inserir, [tarefa, descricao], (err, res) => {
+        if (!err) {
+            console.log("Dados adicionados");
+            // chamamos a função "queryTasks()" para atualizar as informações no console
+            queryTasks();
+        } else {
+            console.log(err)
+        }
+    });
+    res.redirect("/");
 });
 
 // iniciando servidor
