@@ -48,6 +48,18 @@ main {
   padding: 1rem;
 }
 
-.lista-tarefas > ul {
+.lista {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lista ul li {
   list-style: none;
+}
+
+.task-item {
+  text-decoration: none;
+  color: black;
 }

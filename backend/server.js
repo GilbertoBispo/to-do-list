@@ -20,15 +20,17 @@ connection.connect().then(() => { console.log("bando de dados conectado!") });
 
 // aqui nós fazemos um "query" (uma "consulta") no banco de dados que especificamos usando o método .query(). O primeiro atributo é o comando SQL, o segundo é uma callback que possui dois argumentos: "err" e "res", que representam os estados de erro e sucesso da tarefa (eles precisam ser especificados nessa ordem).
 
-function queryTasks() {
-    connection.query(`SELECT * FROM ${process.env.DB_TABLE_NAME}`, (err, res) => {
+async function queryTasks() {
     try {
-        // aqui nós acessamos a resposta e utilizamos o método "rows"
-        console.log(res.rows);
-    } catch {
-        console.log(`Não foi possível extrair as informações. ${err}`);
+        // a função espera essa tarefa resolver e atribui a "res"
+        const res = await connection.query(`SELECT * FROM ${process.env.DB_TABLE_NAME}`);
+        
+        // retorna os dados que queremos
+        return res.rows; 
+    } catch(e) {
+        console.log("Erro na query:", e);
+        throw e;
     }
-    });
 }
 
 // instância do express
@@ -64,6 +66,29 @@ app.post("/", (req, res) => {
     // redireciona o usuário para a mesma página após o submit do formulário
     res.redirect("/");
 });
+
+// rota GET para exibir tarefas numa div no frontend
+app.get("/tarefas", async (req, res) => {
+    try {
+        const tarefas = await queryTasks();
+        res.send(tarefas);
+    } catch(err) {
+        console.log(err);
+    }
+});
+
+app.get("/taskDesc", async (req, res) => {
+    const descricoes = await queryTasks();
+    let taskDescriptions = descricoes.map(item => item.descricao);
+    
+    try {
+        res.send(taskDescriptions);
+    } catch(e) {
+        console.log(e);
+    }
+
+});
+
 
 // iniciando servidor
 app.listen(port, () => {
