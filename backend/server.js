@@ -19,7 +19,6 @@ const connection = new Client({
 connection.connect().then(() => { console.log("bando de dados conectado!") });
 
 // aqui nós fazemos um "query" (uma "consulta") no banco de dados que especificamos usando o método .query(). O primeiro atributo é o comando SQL, o segundo é uma callback que possui dois argumentos: "err" e "res", que representam os estados de erro e sucesso da tarefa (eles precisam ser especificados nessa ordem).
-
 async function queryTasks() {
     try {
         // a função espera essa tarefa resolver e atribui a "res"
@@ -77,18 +76,14 @@ app.get("/tarefas", async (req, res) => {
     }
 });
 
-app.get("/taskDesc", async (req, res) => {
-    const descricoes = await queryTasks();
-    let taskDescriptions = descricoes.map(item => item.descricao);
-    
-    try {
-        res.send(taskDescriptions);
-    } catch(e) {
-        console.log(e);
-    }
-
+// rota POST para receber evento de clique no botão de excluir do frontend
+app.post("/deleteTask", (req, res) => {
+    console.log("dados recebidos: ", req.body);
+    res.json({
+        status: "sucesso",
+        recebido: req.body
+    });
 });
-
 
 // iniciando servidor
 app.listen(port, () => {
