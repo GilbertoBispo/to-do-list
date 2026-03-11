@@ -76,14 +76,21 @@ app.get("/tarefas", async (req, res) => {
     }
 });
 
-// rota POST para receber evento de clique no botão de excluir do frontend
-app.post("/deleteTask", (req, res) => {
-    console.log("dados recebidos: ", req.body);
-    res.json({
-        status: "sucesso",
-        recebido: req.body
-    });
+// rota DELETE para receber evento de clique no botão de excluir do frontend
+app.delete("/deleteTask/:id", async (req, res) => {
+    try {
+        let id = req.params.id;
+
+        let query = "DELETE FROM tarefas WHERE id = $1";
+
+        await connection.query(query, [id]);
+
+        res.status(200).send({mensagem: "exclusão concluída"});
+    } catch(e) {
+        res.status(500).send({mensagem: "não foi possível realizar a exclusão"});
+    }
 });
+
 
 // iniciando servidor
 app.listen(port, () => {

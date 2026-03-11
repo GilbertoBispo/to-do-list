@@ -48,15 +48,16 @@ function deleteTask() {
             };
             // envia evento pro backend através do objeto "clique"
             $.ajax({
-                url: "http://localhost:3000/deleteTask",
-                type: "POST",
+                url: `http://localhost:3000/deleteTask/${clique.idTask}`,
+                type: "DELETE",
                 contentType: "application/json",
                 data: JSON.stringify(clique),
                 success: function(response) {
-                    console.log("Sucesso, ", response);
+                    console.log("Sucesso ", response);
+                    $(`#${clique.idTask}`).closest("details").remove();
                 },
                 error: function(err) {
-                    console.log("Erro", err);
+                    console.log("Erro ", err);
                 }
             });
         });

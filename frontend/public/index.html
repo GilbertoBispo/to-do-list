@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="shortcut icon" href="/frontend/images/clipboard-check.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/clipboard-check.svg" type="image/x-icon">
     <title>Lista de Tarefas</title>
 </head>
 <body>
@@ -18,8 +18,8 @@
             <!-- precisa do atributo "method" com valor "POST", e o URL do "action" precisa ser igual à URL indicada na rota POST do backend -->
             <form action="/" method="POST">
                 <!-- os atributos "name" precisam condizer com os atributos do backend -->
-                <input type="text" name="tarefa" placeholder="Nome da tarefa">
-                <input type="text" name="descricao" placeholder="Descrição">
+                <input type="text" name="tarefa" placeholder="Nome da tarefa" autocomplete="off" required>
+                <input type="text" name="descricao" placeholder="Descrição" autocomplete="off">
                 <input type="submit" value="Enviar">
             </form>
         </div> <!-- adicionar-tarefa -->
