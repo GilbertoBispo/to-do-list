@@ -63,3 +63,9 @@ main {
   text-decoration: none;
   color: black;
 }
+
+.editForm {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}

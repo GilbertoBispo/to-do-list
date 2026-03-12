@@ -6,6 +6,20 @@ import { Client } from "pg";
 // importação do .env
 import "dotenv/config";
 
+// instância do express
+const app = express();
+const port = 3000;
+
+// permite que a API receba e entenda JSON
+app.use(express.json());
+// permite que o express leia dados enviados por formulários
+app.use(express.urlencoded({ extended: true }));
+
+// servindo arquivos estáticos
+// como estamos usando o ES Modules ("type": "module"; no package.json), precisamos usar "import.meta.dirname" no lugar do "__dirname"
+// ao especificar o caminho relativo da pasta onde estão os arquivos do frontend, precisamos separar cada etapa do caminho com vírgulas
+app.use("/", express.static(path.join(import.meta.dirname, "../", "frontend", "public")));
+
 // criamos uma instância de Client e passamos um objeto dentro com os atributos "host", "user", "port" (que podem ser vistos nas propriedades do pgAdmin), "password" e "database". Essas informações devem ser definidas no .env
 const connection = new Client({
     host: process.env.DB_HOST,
@@ -32,26 +46,16 @@ async function queryTasks() {
     }
 }
 
-// instância do express
-const app = express();
-const port = 3000;
-
-// permite que a API receba e entenda JSON
-app.use(express.json());
-// permite que o express leia dados enviados por formulários
-app.use(express.urlencoded({ extended: true }));
-
-// servindo arquivos estáticos
-// como estamos usando o ES Modules ("type": "module"; no package.json), precisamos usar "import.meta.dirname" no lugar do "__dirname"
-// ao especificar o caminho relativo da pasta onde estão os arquivos do frontend, precisamos separar cada etapa do caminho com vírgulas
-app.use("/", express.static(path.join(import.meta.dirname, "../", "frontend", "public")));
 
 // método POST para receber as informações vindas do formulário no frontend
 // a URL no primeiro parâmetro precisa ser a mesma indicada no atributo "action" da tag "form"
+
 app.post("/", (req, res) => {
+
     // esse destructuring precisa ter as variáveis iguais aos valores dos atributos "name" nos <input> do HTML
     let { tarefa, descricao } = req.body;
     // esses símbolos de "$" são placeholders, úteis para segurança contra SQL Injection
+
     const inserir = `INSERT INTO ${process.env.DB_TABLE_NAME} (titulo, descricao) VALUES ($1, $2) RETURNING *`;
     connection.query(inserir, [tarefa, descricao], (err, res) => {
         if (!err) {
@@ -62,6 +66,7 @@ app.post("/", (req, res) => {
             console.log(err)
         }
     });
+
     // redireciona o usuário para a mesma página após o submit do formulário
     res.redirect("/");
 });
@@ -91,6 +96,19 @@ app.delete("/deleteTask/:id", async (req, res) => {
     }
 });
 
+// rota patch para alterar tarefa no banco de dados
+app.patch("/editTask/:id", async (req, res) => {
+    let { descEditada, tituloEditado } = req.body;
+    let idNumero = req.params.id;
+
+    const query = "UPDATE tarefas SET titulo = $1, descricao = $2 WHERE id = $3";
+
+    await connection.query(query, [tituloEditado, descEditada, idNumero]);
+
+    res.status(200).send({mensagem: "Tarefa editada com sucesso!"});
+
+    res.redirect("/");
+});
 
 // iniciando servidor
 app.listen(port, () => {
