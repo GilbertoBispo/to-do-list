@@ -22,7 +22,7 @@ Siga os passos abaixo para rodar o projeto localmente:
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [https://github.com](https://github.com/GilbertoBispo/to-do-list)
+    git clone https://github.com/GilbertoBispo/to-do-list
     ```
 2.  **Instale as dependências:**
     ```bash
