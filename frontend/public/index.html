@@ -28,9 +28,9 @@
         
         <div class="hidden-adicionar-tarefa">
             <form action="/" method="POST">
-                <input type="text" name="tarefa" placeholder="Nome da tarefa" autocomplete="off" required>
-                <textarea name="descricao" id="descricao" style="resize: none;" placeholder="Descrição da tarefa"></textarea>
-                <input type="submit" value="Enviar">
+                <input type="text" name="tarefa" placeholder="Nome da tarefa" autocomplete="off" required minlength="10" maxlength="35">
+                <textarea name="descricao" id="descricao" style="resize: none;" placeholder="Descrição da tarefa"  maxlength="50"></textarea>
+                <input type="submit" value="Adicionar">
             </form>
         </div>
 
