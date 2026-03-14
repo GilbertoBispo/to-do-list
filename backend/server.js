@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // ao especificar o caminho relativo da pasta onde estão os arquivos do frontend, precisamos separar cada etapa do caminho com vírgulas
 app.use("/", express.static(path.join(import.meta.dirname, "../", "frontend", "public")));
 
+
 // rotas
 app.use("/", router)
 app.use("/tarefas", router)

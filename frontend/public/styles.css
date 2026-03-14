@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +7,12 @@
 }
 
 body {
+  --inicio-div: #0061C0;
+  --inicio-div-dark: #004f9d;
   min-height: 100vh;
   line-height: 1.5;
+  background-color: var(--inicio-div-dark);
+  font-family: "Montserrat", sans-serif;
 }
 
 img, picture, video, canvas, svg {
@@ -15,47 +21,94 @@ img, picture, video, canvas, svg {
 }
 
 header {
-  background-color: tomato;
-  display: flex;
-  justify-content: center;
+  background-color: #232428;
+  padding: 5px 15px 5px 15px;
 }
 
 main {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  margin-top: 30px;
 }
 
 .adicionar-tarefa {
-  background-color: lightgray;
   padding: 1rem;
   display: flex;
   justify-content: center;
-  width: 90vw;
+  width: 100%;
   gap: 10px;
   margin: auto;
-  border-radius: 15px;
+
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.hidden-adicionar-tarefa {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  margin: auto;
+
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.adicionar-tarefa > form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hidden-adicionar-tarefa > form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 1rem;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.adicionar-tarefa > form > input[type="submit"] {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  height: 40px;
+  color: var(--inicio-div);
 }
 
 .lista-tarefas {
   margin: auto;
-  background-color: lightgrey;
-  width: 90vw;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
   border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
+  padding:  0 1rem 1rem 1rem;
+}
+
+.lista-tarefas > div > h2 {
+  padding: 10px;
 }
 
 .lista {
-  width: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  justify-self: center;
 }
 
-.lista ul li {
+.lista li {
   list-style: none;
 }
 
@@ -69,3 +122,139 @@ main {
   gap: 20px;
   justify-content: center;
 }
+
+#title {
+  color: white;
+  font-weight: 400;
+  display: flex;
+  gap: 15px;
+}
+
+#title img {
+  width: 30px;
+}
+
+.inicio {
+  width: 100vw;
+  display: flex;
+  padding: 0 15px 0 15px;
+  justify-content: space-between;
+  background-color: var(--inicio-div);
+  height: 15vh;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+}
+
+.inicio > button {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  height: 40px;
+  color: var(--inicio-div);
+  text-shadow: #232428;
+}
+
+.inicio h2 {
+  color: white;
+  font-weight: 400;
+}
+
+.inicio p {
+  color: white;
+  font-size: 0.85rem;
+}
+
+.task-row {
+  background-color: #e7e7e7;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.task-row-data {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 7vh;
+  padding: 5px 15px 5px 15px;
+  width: 80%;
+}
+
+.task-row h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.task-row > div p {
+  font-weight: 300;
+  font-size: 0.85rem;
+  padding: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 20%;
+  position: relative;
+}
+
+.controls button {
+  border: none;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-tasks {
+  position: absolute;
+  bottom: 110%; 
+  background: #E9E9ED;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  gap: 5px;
+  border-radius: 5px;
+  right: 0;
+
+  opacity: 1;
+  transition: 0.4s;
+  transform: translateY(-5px) scale(1.21);
+
+}
+
+.menu-tasks button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.hidden-menu-tasks {
+  position: absolute;
+  bottom: 110%; 
+  background: #E9E9ED;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  gap: 5px;
+  border-radius: 5px;
+  right: 0;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.2s ease-in-out;
+}
+
+.hidden-menu-tasks button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+

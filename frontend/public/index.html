@@ -1,32 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <link rel="shortcut icon" href="/images/clipboard-check.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="images/clipboard-check.svg" type="image/x-icon">
     <title>Lista de Tarefas</title>
 </head>
 <body>
     <header>
-        <h1>Lista de Tarefas</h1>
+        <h1 id="title">Lista de Tarefas <img style="color: white;" src="./images/clipboard-check.svg" alt="clipboard-check icon"></h1>
     </header>
 
     <main>
+        
+        
+        
         <!-- div para adicionar tarefas -->
-        <div class="adicionar-tarefa">
-            <!-- precisa do atributo "method" com valor "POST", e o URL do "action" precisa ser igual à URL indicada na rota POST do backend -->
+        
+        <div class="inicio">
+            <div class="dia-atual">
+                <h2>Sexta-Feira</h2>
+                <p>13 de Março</p>
+            </div>
+            <button class="nova-tarefa">Adicionar Nova</button>
+        </div>
+        
+        <div class="hidden-adicionar-tarefa">
             <form action="/" method="POST">
-                <!-- os atributos "name" precisam condizer com os atributos do backend -->
                 <input type="text" name="tarefa" placeholder="Nome da tarefa" autocomplete="off" required>
-                <input type="text" name="descricao" placeholder="Descrição" autocomplete="off">
+                <textarea name="descricao" id="descricao" style="resize: none;" placeholder="Descrição da tarefa"></textarea>
                 <input type="submit" value="Enviar">
             </form>
-        </div> <!-- adicionar-tarefa -->
+        </div>
 
         <!-- div que exibe todas as tarefas -->
         <div class="lista-tarefas">
-            
+            <div>
+                <h2>Minhas tarefas</h2>
+            </div>
             <ul class="lista">
             </ul>
         </div> <!-- lista-tarefas -->
@@ -37,6 +49,6 @@
         integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="
         crossorigin="anonymous">
     </script>
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
 </body>
 </html>
