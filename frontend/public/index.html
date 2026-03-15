@@ -29,11 +29,11 @@
         <div class="hidden-adicionar-tarefa">
             <form action="/" method="POST">
                 <input type="text" name="tarefa" placeholder="Nome da tarefa" autocomplete="off" required minlength="10" maxlength="35">
-                <textarea name="descricao" id="descricao" style="resize: none;" placeholder="Descrição da tarefa"  maxlength="50"></textarea>
+                <textarea name="descricao" id="descricao" style="resize: none;" placeholder="Descrição da tarefa"  maxlength="50" autocomplete="off"></textarea>
                 <input type="submit" value="Adicionar">
             </form>
         </div>
-
+        
         <!-- div que exibe todas as tarefas -->
         <div class="lista-tarefas">
             <div>
@@ -42,8 +42,21 @@
             <ul class="lista">
             </ul>
         </div> <!-- lista-tarefas -->
+        
+        <div class="hidden-edit-task">
+            <form class='edit-form'>
+                <input class='edit-title' type="text" name="tarefaEditada" placeholder="Editar nome da tarefa" autocomplete="off" maxlength="35">
+                <textarea class="edit-desc" name="descricaoEditada" placeholder="Editar Descrição" autocomplete="off" maxlength="50" style="resize: none;"></textarea>
+                <input class='enviar-edit' type="submit" value="Enviar">
+            </form>
+            <button class="cancel-edit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                </svg>
+            </button>
+        </div>
     </main>
-
+    
     <script
         src="https://code.jquery.com/jquery-4.0.0.js"
         integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U="

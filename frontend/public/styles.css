@@ -6,10 +6,10 @@
   box-sizing: border-box;
 }
 
-body {
+body, html {
   --inicio-div: #0061C0;
   --inicio-div-dark: #004f9d;
-  min-height: 100vh;
+  height: 100vh;
   line-height: 1.5;
   background-color: var(--inicio-div-dark);
   font-family: "Montserrat", sans-serif;
@@ -29,6 +29,7 @@ main {
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .adicionar-tarefa {
@@ -64,6 +65,7 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   gap: 10px;
   padding: 1rem auto;
@@ -99,7 +101,7 @@ main {
 }
 
 .adicionar-tarefa > form > input[type="text"], textarea {
-  width: 70%;
+  width: 100%;
   padding: 15px;
   outline: none;
   border: 1.5px solid #232428;
@@ -110,9 +112,9 @@ main {
   margin: auto;
   background-color: white;
   width: 100vw;
-  height: 100vh;
-  border-radius: 15px;
+  border-radius: 15px 15px 0 0;
   padding:  0 1rem 1rem 1rem;
+  flex: 1;
 }
 
 .lista-tarefas > div > h2 {
@@ -124,7 +126,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  justify-self: center;
 }
 
 .lista li {
@@ -135,13 +136,13 @@ main {
   text-decoration: none;
   color: black;
 }
-
-.editForm {
+/*
+.edit-form {
   display: flex;
   gap: 20px;
   justify-content: center;
 }
-
+*/
 #title {
   color: white;
   font-weight: 400;
@@ -276,3 +277,80 @@ main {
   border-radius: 5px;
 }
 
+/* edit form */
+
+.hidden-edit-task {
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  background-color: #232428;
+  width: 100vw;
+  height: fit-content;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(210px);
+  transition-duration: 0.3s;
+}
+
+.edit-task {
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  background-color: #232428;
+  width: 100vw;
+  height: fit-content;
+
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(-210px);
+  transition-duration: 0.3s;
+}
+
+.edit-task > .edit-form {
+  z-index: 200;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 400px; /* Evita que fique largo demais em telas grandes */
+  gap: 15px;
+  background-color: #232428;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  margin: 0 auto;
+}
+
+
+.edit-task > .edit-form .edit-title, .edit-desc, .enviar-edit {
+  width: 100%;
+  padding: 1rem;
+}
+
+.hidden-edit-task > .edit-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  gap: 15px;
+  margin-left: auto;
+}
+
+.hidden-edit-task > .edit-form .edit-title, .edit-desc, .enviar-edit {
+  width: 100%;
+  padding: 1rem;
+}
+
+.cancel-edit {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}

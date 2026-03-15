@@ -56,15 +56,13 @@ router.delete("/deleteTask/:id", async (req, res) => {
 // rota patch para alterar tarefa no banco de dados
 router.patch("/editTask/:id", async (req, res) => {
     let { descEditada, tituloEditado } = req.body;
-    let idNumero = req.params.id;
+    let idClique = req.params.id;
 
     const query = "UPDATE tarefas SET titulo = $1, descricao = $2 WHERE id = $3";
 
-    await connection.query(query, [tituloEditado, descEditada, idNumero]);
+    await connection.query(query, [tituloEditado, descEditada, idClique]);
 
     res.status(200).send({mensagem: "Tarefa editada com sucesso!"});
-
-    res.redirect("/");
 });
 
 export default router;

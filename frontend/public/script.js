@@ -26,7 +26,7 @@ async function carregarTarefas() {
                             </button>
                             <div class='control-menu hidden-menu-tasks'>
                                 <button class='delete-button' id='${task.id}'>Deletar</button>
-                                <button class='edit-button'>Editar</button>
+                                <button class='edit-button ${task.id}'>Editar</button>
                             </div>
                         </div>
                     </div>
@@ -34,12 +34,31 @@ async function carregarTarefas() {
             `);
 
         });
+
         let menuTaskButtons = $(".menu-task-button");
         let hiddenMenuTasks = $(".hidden-menu-tasks");
         console.log(menuTaskButtons);   
 
         menuTaskButtons.on("click", function() {
-            $(this).next(hiddenMenuTasks).toggleClass("hidden-menu-tasks menu-tasks")
+            $(this).next(hiddenMenuTasks).toggleClass("hidden-menu-tasks menu-tasks");
+            
+        });
+
+        // funcionalidade para editar tarefas
+        
+        let editTaskDiv = $(".hidden-edit-task");
+        let editTaskButton = $(".control-menu > .edit-button");
+        // let enviarEdit = $(".enviar-edit");
+        
+        editTaskButton.on("click", function() {
+            editTaskDiv.toggleClass("hidden-edit-task edit-task");
+            
+        })
+        let cancelEdit = $(".cancel-edit");
+        
+        cancelEdit.on("click", function() {
+            editTaskDiv.toggleClass("edit-task hidden-edit-task");
+
         });
 
     } catch(e) {
@@ -47,10 +66,10 @@ async function carregarTarefas() {
     }
 }
 
-carregarTarefas()
+carregarTarefas();
 
-funcoes.deleteTask()
-funcoes.editButton()
+funcoes.deleteTask();
+funcoes.editTask();
 
 // funcionalidade para adicionar tarefas
 
@@ -58,5 +77,11 @@ let adicionarTarefa = $(".nova-tarefa");
 let formTarefas = $(".hidden-adicionar-tarefa");
 
 adicionarTarefa.on("click", () => {
-    formTarefas.toggleClass("hidden-adicionar-tarefa adicionar-tarefa")
+    formTarefas.toggleClass("hidden-adicionar-tarefa adicionar-tarefa");
 });
+
+
+
+
+
+
