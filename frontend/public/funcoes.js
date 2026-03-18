@@ -103,5 +103,16 @@ function editTask() {
     }
 }
 
+function abrirMenu() {
+    // seleciona o botão de abrir menu
+    let menuButton = $(".menu-button");
+    // seleciona a div com os links
+    let links = $(".hidden-links");
 
-export default {editTask, deleteTask};
+    menuButton.on("click", function() {
+        links.toggleClass("hidden-links links")
+    })
+}
+
+
+export default {editTask, deleteTask, abrirMenu};

@@ -66,10 +66,6 @@ async function carregarTarefas() {
     }
 }
 
-carregarTarefas();
-
-funcoes.deleteTask();
-funcoes.editTask();
 
 // funcionalidade para adicionar tarefas
 
@@ -81,7 +77,8 @@ adicionarTarefa.on("click", () => {
 });
 
 
+carregarTarefas();
 
-
-
-
+funcoes.deleteTask();
+funcoes.editTask();
+funcoes.abrirMenu();
