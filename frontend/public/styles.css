@@ -24,7 +24,6 @@ img, picture, video, canvas, svg {
 header {
   background-color: #232428;
   padding: 5px 15px 5px 15px;
-
 }
 
 header > div {
@@ -40,19 +39,22 @@ header > div {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
+  background-color: #232428;
+  color: white;
 }
 
 .hidden-links {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  transform: translateY(-50px);
   transition: 0.3s ease;
   z-index: 100;
-  background-color: #1e1f23;
-  width: 100%;
+  background-color: #202124;
+  left: 0;
+  right: 0;
   height: fit-content;
-  border-radius: 5px;
+  transform: translateY(-200px);
 }
 
 .hidden-links > ul {
@@ -67,13 +69,13 @@ header > div {
 .links {
   visibility: visible;
   opacity: 1;
-  position: relative;
+  position: absolute;
   transition: 0.3s ease;
   z-index: 100;
   background-color: #202124;
-  width: 100%;
+  left: 0;
+  right: 0;
   height: fit-content;
-  border-radius: 5px;
 }
 
 .links > ul {
@@ -208,6 +210,7 @@ main {
   border-radius: 15px 15px 0 0;
   padding:  0 1rem 1rem 1rem;
   flex: 1;
+  
 }
 
 .lista-tarefas > div > h2 {
@@ -449,6 +452,72 @@ main {
   margin: 0 auto; 
 }
 
+.lista-tarefas-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.botao-filtro {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+.concluido {
+  display: none;
+}
+
+.hidden-filtrar-tasks {
+  background-color: #E9E9ED;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 100;
+  padding: 5px;
+  border-radius: 5px;
+  
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+  transform: translateY(10px) translateX(-60px);
+}
+
+.filtrar-tasks {
+  background-color: #E9E9ED;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 100;
+  padding: 5px;
+  border-radius: 5px;
+  
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s;
+  transform: translateY(-120px) translateX(-60px);
+}
+
+.control-filters {
+  position: relative;
+}
+
+.control-filters button {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.control-filters button:hover {
+  background-color: #c8c7c7;
+}
+
 /* ========== Media Queries ========== */
 
 @media screen and (min-width: 1023px) {
@@ -470,8 +539,7 @@ main {
     opacity: 1;
     width: 170px;
     transform: translateY(20px);
-
-    box-sizing: border-box;
+    margin: 0 auto;
   }
 
   header h1 {

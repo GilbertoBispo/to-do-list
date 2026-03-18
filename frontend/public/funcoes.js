@@ -114,5 +114,26 @@ function abrirMenu() {
     })
 }
 
+function filtro() {
+    let filterButton = $(".botao-filtro");
+    let containerFiltro = $(".hidden-filtrar-tasks");
+    
+    let task = $(".controls > input[type='checkbox']");
 
-export default {editTask, deleteTask, abrirMenu};
+    filterButton.on("click", function() {
+        containerFiltro.toggleClass("hidden-filtrar-tasks filtrar-tasks")
+    });
+
+    // verifica o estado do checkbox da tarefa
+    task.on("change", function() {
+        if( $(this).is(":checked") ) {
+
+            $(this).closest("li").addClass("concluido")
+
+        } else {
+            
+        }
+    });
+}
+
+export default {editTask, deleteTask, abrirMenu, filtro};
