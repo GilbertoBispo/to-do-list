@@ -24,10 +24,7 @@ img, picture, video, canvas, svg {
 header {
   background-color: #232428;
   padding: 5px 15px 5px 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+
 }
 
 header > div {
@@ -50,7 +47,7 @@ header > div {
   opacity: 0;
   position: absolute;
   transform: translateY(-50px);
-  transition: 0.3s;
+  transition: 0.3s ease;
   z-index: 100;
   background-color: #1e1f23;
   width: 100%;
@@ -462,6 +459,28 @@ main {
   header {
     width: 200px;
     flex-shrink: 0;
+
+  }
+  .menu-button {
+    display: none;
+  }
+
+  .hidden-links {
+    visibility: visible;
+    opacity: 1;
+    width: 170px;
+    transform: translateY(20px);
+
+    box-sizing: border-box;
+  }
+
+  header h1 {
+    align-items: center;
+  }
+
+  header img {
+    width: 30px;
+    height: 30px;
   }
 
   main {
