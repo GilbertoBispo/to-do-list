@@ -291,7 +291,8 @@ main {
   background-color: #232428;
   width: 100vw;
   height: fit-content;
-
+  position: absolute;
+  
   visibility: hidden;
   opacity: 0;
   transform: translateY(210px);
@@ -364,13 +365,15 @@ main {
 @media screen and (min-width: 1023px) {
   body {
     display: flex;
+    flex-direction: row-reverse;
   }
   header {
-    width: 15vw;
+    width: 200px;
+    flex-shrink: 0;
   }
-  main {
 
-    width: 85vw;
+  main {
+    flex-grow: 1;
   }
   .inicio {
     width: 100%;
