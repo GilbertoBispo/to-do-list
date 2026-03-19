@@ -564,7 +564,7 @@ main {
   header {
     width: 200px;
     flex-shrink: 0;
-
+    
   }
   .menu-button {
     display: none;
@@ -575,7 +575,7 @@ main {
     opacity: 1;
     width: 170px;
     transform: translateY(20px);
-    margin: 0 auto;
+    position: relative;
   }
 
   header h1 {
@@ -596,4 +596,20 @@ main {
   .lista-tarefas {
     width: 100%;
   }
+
+  .filtrar-tasks {
+  background-color: #E9E9ED;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 100;
+  padding: 5px;
+  border-radius: 5px;
+  
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s;
+  transform: translateY(-80px) translateX(-100px);
+}
 }
