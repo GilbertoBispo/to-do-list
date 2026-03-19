@@ -38,10 +38,45 @@ header > div {
   height: 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
   border: none;
   background-color: #232428;
   color: white;
+}
+
+.menu-button span {
+  background-color: white;
+  width: 100%;
+  height: 2px;
+  border-radius: 5px;
+}
+
+details span:nth-child(1) {
+  transition: 0.3s;
+}
+
+details span:nth-child(2) {
+  transition: 0.3s;
+}
+
+details span:nth-child(3) {
+  transition: 0.3s;
+}
+
+details:open span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+  transition: 0.3s;
+}
+
+details:open span:nth-child(2) {
+  display: none;
+  transition: 0.3s;
+}
+
+details:open span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+  transition: 0.3s;
 }
 
 .hidden-links {
@@ -76,6 +111,7 @@ header > div {
   left: 0;
   right: 0;
   height: fit-content;
+  transform: translateY(4px);
 }
 
 .links > ul {
