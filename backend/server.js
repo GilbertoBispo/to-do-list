@@ -2,11 +2,13 @@
 import express from "express";
 import path from "path";
 import router from "./routes.js";
+import cors from "cors";
 
 // instância do express
 const app = express();
 const port = 3000;
 
+app.use(cors())
 // permite que a API receba e entenda JSON
 app.use(express.json());
 // permite que o express leia dados enviados por formulários
@@ -20,9 +22,9 @@ app.use("/", express.static(path.join(import.meta.dirname, "../", "frontend", "p
 
 // rotas
 app.use("/", router)
-app.use("/tarefas", router)
-app.use("/deleteTask/:id", router)
-app.use("/editTask/:id", router)
+app.use("/api/tarefas", router)
+app.use("/api/deleteTask/:id", router)
+app.use("/api/editTask/:id", router)
 
 
 // iniciando servidor
