@@ -419,11 +419,12 @@ main {
   background-color: #232428;
   width: 100vw;
   height: fit-content;
-  position: absolute;
+  position: absolute  ;
+
   
   visibility: hidden;
   opacity: 0;
-  transform: translateY(210px);
+  transform: translateY(100%);
   transition-duration: 0.3s;
 }
 
@@ -435,10 +436,11 @@ main {
   background-color: #232428;
   width: 100vw;
   height: fit-content;
+  position: relative;
 
   visibility: visible;
   opacity: 1;
-  transform: translateY(-210px);
+  transform: translateY(-100%);
   transition-duration: 0.3s;
 }
 
@@ -449,7 +451,7 @@ main {
   flex-direction: column;
   align-items: center;
   width: 90%;
-  max-width: 400px; /* Evita que fique largo demais em telas grandes */
+  max-width: 400px; 
   gap: 15px;
   background-color: #232428;
   padding: 20px;
@@ -564,12 +566,10 @@ main {
   header {
     width: 200px;
     flex-shrink: 0;
-    
   }
   .menu-button {
     display: none;
   }
-
   .hidden-links {
     visibility: visible;
     opacity: 1;
@@ -577,16 +577,13 @@ main {
     transform: translateY(20px);
     position: relative;
   }
-
   header h1 {
     align-items: center;
   }
-
   header img {
     width: 30px;
     height: 30px;
   }
-
   main {
     flex-grow: 1;
   }
@@ -598,18 +595,55 @@ main {
   }
 
   .filtrar-tasks {
-  background-color: #E9E9ED;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  z-index: 100;
-  padding: 5px;
-  border-radius: 5px;
-  
-  visibility: visible;
-  opacity: 1;
-  transition: 0.3s;
-  transform: translateY(-80px) translateX(-100px);
-}
+    background-color: #E9E9ED;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 100;
+    padding: 5px;
+    border-radius: 5px;
+    
+    visibility: visible;
+    opacity: 1;
+    transition: 0.3s;
+    transform: translateY(-80px) translateX(-100px);
+  }
+  .hidden-edit-task {
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    background-color: #232428;
+    height: fit-content;
+    position: absolute;
+    width: calc(100vw - 200px);
+    
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(100%);
+    transition-duration: 0.3s;
+  }
+  .edit-task {
+    width: calc(100vw - 200px);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    background-color: #232428;
+    height: fit-content;
+    position: relative;
+
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
+    transition-duration: 0.3s;
+  }
+  .edit-task > .edit-form {
+    margin: 0 0 0 auto;
+    max-width: 100%;
+    width: 80%;
+    height: fit-content;
+    padding: 0;
+  }
 }
