@@ -323,6 +323,10 @@ main {
   border-radius: 5px;
 }
 
+.hidden-task-row {
+  display: none;
+}
+
 .task-row-data {
   display: flex;
   justify-content: center;

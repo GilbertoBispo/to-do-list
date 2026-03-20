@@ -115,25 +115,49 @@ function abrirMenu() {
 }
 
 function filtro() {
+    // seleciona o botão de filtro e a div com os controles de filtro
     let filterButton = $(".botao-filtro");
     let containerFiltro = $(".hidden-filtrar-tasks");
+
+    // seleciona os botões de filtro "Concluídos" e "Não concluídos"
+    let concluidos = $(".concluidos");
+    let naoConlcuidos = $(".nao-concluidos");
+    let padrao = $(".padrao");
+
+    // seleciona o checkbox da task
+    //let taskMarker = $(".controls > input[type='checkbox']");
     
-    let task = $(".controls > input[type='checkbox']");
-
+    // função de filtro de tasks que é ativada ao clicar no botão de filtro
     filterButton.on("click", function() {
-        containerFiltro.toggleClass("hidden-filtrar-tasks filtrar-tasks")
+
+        // captura os inputs que estão marcados e os que não estão
+        let finishedTasks = $(".controls > input[type='checkbox']:checked");
+        let notFinishedTasks = $(".controls > input[type='checkbox']:not(:checked)");
+        
+        // torna a div com controles de filtro visível ao clicar no botão de filtro
+        containerFiltro.toggleClass("hidden-filtrar-tasks filtrar-tasks");
+
+        // exibe somente as marcadas como concluído
+        concluidos.on("click", function() {
+            notFinishedTasks.closest("li").toggleClass("hidden-task-row");
+            finishedTasks.closest("li").removeClass("hidden-task-row");
+
+        });
+
+        // exibe somente as não marcadas como concluído
+        naoConlcuidos.on("click", function() {
+            finishedTasks.closest("li").toggleClass("hidden-task-row");
+            notFinishedTasks.closest("li").removeClass("hidden-task-row");
+
+        });
+
+        // torna todas elas visíveis de novo
+        padrao.on("click", function() {
+            finishedTasks.closest("li").removeClass("hidden-task-row");
+            notFinishedTasks.closest("li").removeClass("hidden-task-row");
+        });
     });
 
-    // verifica o estado do checkbox da tarefa
-    task.on("change", function() {
-        if( $(this).is(":checked") ) {
-
-            $(this).closest("li").addClass("concluido")
-
-        } else {
-            
-        }
-    });
 }
 
 export default {editTask, deleteTask, abrirMenu, filtro};
