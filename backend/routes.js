@@ -4,7 +4,7 @@ import queryTasks from "./funcoes.js";
 const router = express.Router();
 
 // rota GET para exibir tarefas numa div no frontend
-router.get("/api/tarefas", async (req, res) => {
+router.get("/api/", async (req, res) => {
     try {
         const tarefas = await queryTasks();
         res.send(tarefas);
@@ -17,7 +17,7 @@ router.get("/api/tarefas", async (req, res) => {
 // método POST para receber as informações vindas do formulário no frontend
 // a URL no primeiro parâmetro precisa ser a mesma indicada no atributo "action" da tag "form"
 
-router.post("/api/", (req, res) => {
+router.post("/api/addTask", (req, res) => {
 
     // esse destructuring precisa ter as variáveis iguais aos valores dos atributos "name" nos <input> do HTML
     let { tarefa, descricao } = req.body;
@@ -29,13 +29,14 @@ router.post("/api/", (req, res) => {
             //console.log("Dados adicionados");
             // chamamos a função "queryTasks()" para atualizar as informações no console
             queryTasks();
+            // redireciona o usuário para a mesma página após o submit do formulário
+            res.status(201).send({message: "dados adicionados"});
         } else {
             console.log(err)
         }
     });
 
-    // redireciona o usuário para a mesma página após o submit do formulário
-    res.status(200).send({message: "dados adicionados"});
+    res.status(201).send({message: "dados adicionados"});
 });
 
 
