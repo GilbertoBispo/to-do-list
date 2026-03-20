@@ -9,9 +9,7 @@ const isLocalhost = process.env.DATABASE_URL?.includes('localhost');
 // criamos uma instância de Client e passamos um objeto dentro com os atributos "host", "user", "port" (que podem ser vistos nas propriedades do pgAdmin), "password" e "database". Essas informações devem ser definidas no .env
 const connection = new Pool({
     connectionString: process.env.DB_URL,
-    ssl: isLocalhost
-    ? false // Local: Sem SSL
-    : { rejectUnauthorized: false }
+    ssl: { rejectUnauthorized: false } 
     /*
     host: process.env.DB_HOST,
     user: process.env.DB_USER,

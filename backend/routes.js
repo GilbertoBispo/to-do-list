@@ -26,7 +26,7 @@ router.post("/api/", (req, res) => {
     const inserir = `INSERT INTO ${process.env.DB_TABLE_NAME} (titulo, descricao) VALUES ($1, $2) RETURNING *`;
     connection.query(inserir, [tarefa, descricao], (err, res) => {
         if (!err) {
-            console.log("Dados adicionados");
+            //console.log("Dados adicionados");
             // chamamos a função "queryTasks()" para atualizar as informações no console
             queryTasks();
         } else {
@@ -35,7 +35,7 @@ router.post("/api/", (req, res) => {
     });
 
     // redireciona o usuário para a mesma página após o submit do formulário
-    //res.redirect("/");
+    res.status(200).send({message: "dados adicionados"});
 });
 
 
