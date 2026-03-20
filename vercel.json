@@ -10,10 +10,6 @@
       "destination": "/backend/server.js"
     },
     {
-      "source": "/",
-      "destination": "/frontend/public/index.html"
-    },
-    {
       "source": "/(.*)",
       "destination": "/frontend/public/$1"
     }
