@@ -29,3 +29,5 @@ app.use("/editTask/:id", router)
 app.listen(port, () => {
     console.log("executando servidor.");
 });
+
+export default app;
