@@ -10,6 +10,7 @@ router.get("/api/tarefas", async (req, res) => {
         res.send(tarefas);
     } catch(err) {
         console.log(err);
+        res.status(500).send({ erro: "Erro ao buscar tarefas" });
     }
 });
 
