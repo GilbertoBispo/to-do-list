@@ -11,7 +11,7 @@ async function carregarTarefas() {
     
     let tarefasData = await tarefas.json();
     
-    console.log(tarefas);
+    console.log(tarefasData);
 
     try {
         tarefasData.map(task => {

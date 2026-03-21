@@ -30,13 +30,13 @@ router.post("/api/addTask", (req, res) => {
             // chamamos a função "queryTasks()" para atualizar as informações no console
             queryTasks();
             // redireciona o usuário para a mesma página após o submit do formulário
-            res.status(201).send({message: "dados adicionados"});
         } else {
             console.log(err)
         }
     });
 
     res.status(201).send({message: "dados adicionados"});
+    res.redirect("/api/");
 });
 
 
