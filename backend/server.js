@@ -15,18 +15,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // rotas
-app.use("/", router)
+app.use("/", router);
+app.use("/api/tarefas", router);
+app.use("/api/deleteTask/:id", router);
+app.use("/api/editTask/:id", router);
+
 // servindo arquivos estáticos
 // como estamos usando o ES Modules ("type": "module"; no package.json), precisamos usar "import.meta.dirname" no lugar do "__dirname"
 // ao especificar o caminho relativo da pasta onde estão os arquivos do frontend, precisamos separar cada etapa do caminho com vírgulas
 app.use("/", express.static(path.join(import.meta.dirname, "../", "frontend", "public")));
 
 
-/*
-app.use("/api/tarefas", router)
-app.use("/api/deleteTask/:id", router)
-app.use("/api/editTask/:id", router)
-*/
+
+
 
 /* iniciando servidor
 app.listen(port, () => {
