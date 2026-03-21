@@ -36,7 +36,7 @@ router.post("/api/addTask", (req, res) => {
     });
 
     res.status(201).send({message: "dados adicionados"});
-    res.redirect("/api/");
+    res.redirect("/");
 });
 
 
