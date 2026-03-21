@@ -14,7 +14,7 @@ app.use(express.json());
 // permite que o express leia dados enviados por formulários
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/", router);
+app.use("/", router);
 /* rotas
 app.use("/api/tarefas", router);
 app.use("/api/deleteTask/:id", router);
@@ -23,7 +23,7 @@ app.use("/api/editTask/:id", router);
 // servindo arquivos estáticos
 // como estamos usando o ES Modules ("type": "module"; no package.json), precisamos usar "import.meta.dirname" no lugar do "__dirname"
 // ao especificar o caminho relativo da pasta onde estão os arquivos do frontend, precisamos separar cada etapa do caminho com vírgulas
-app.use("/api/", express.static(path.join(import.meta.dirname, "../", "frontend", "public")));
+app.use("/", express.static(path.join(import.meta.dirname, "../", "frontend", "public")));
 
 
 
