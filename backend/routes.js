@@ -4,7 +4,7 @@ import queryTasks from "./funcoes.js";
 const router = express.Router();
 
 // rota GET para exibir tarefas numa div no frontend
-router.get("/", async (req, res) => {
+router.get("/api/", async (req, res) => {
     try {
         const tarefas = await queryTasks();
         res.send(tarefas);
@@ -36,7 +36,7 @@ router.post("/api/addTask", (req, res) => {
     });
 
     res.status(201).send({message: "dados adicionados"});
-    res.redirect("/");
+    res.redirect("/api/");
 });
 
 
