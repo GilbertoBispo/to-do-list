@@ -2,10 +2,19 @@
 import express from "express";
 import path from "path";
 import router from "./routes.js";
+import cors from "cors";
+
 
 // instância do express
 const app = express();
 const port = 3000;
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "Accept", "X-Requested-With"],
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+}));
 
 // permite que a API receba e entenda JSON
 app.use(express.json());
