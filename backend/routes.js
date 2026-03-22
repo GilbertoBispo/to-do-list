@@ -4,7 +4,7 @@ import queryTasks from "./funcoes.js";
 const router = express.Router();
 
 // rota GET para exibir tarefas numa div no frontend
-router.get("/backend/tarefas", async (req, res) => {
+router.get("/tarefas", async (req, res) => {
     try {
         const tarefas = await queryTasks();
         res.send(tarefas);
@@ -16,7 +16,7 @@ router.get("/backend/tarefas", async (req, res) => {
 // método POST para receber as informações vindas do formulário no frontend
 // a URL no primeiro parâmetro precisa ser a mesma indicada no atributo "action" da tag "form"
 
-router.post("/backend/addTask", (req, res) => {
+router.post("/addTask", (req, res) => {
 
     // esse destructuring precisa ter as variáveis iguais aos valores dos atributos "name" nos <input> do HTML
     let { tarefa, descricao } = req.body;
@@ -39,7 +39,7 @@ router.post("/backend/addTask", (req, res) => {
 
 
 // rota DELETE para receber evento de clique no botão de excluir do frontend
-router.delete("/backend/deleteTask/:id", async (req, res) => {
+router.delete("/deleteTask/:id", async (req, res) => {
     try {
         let id = req.params.id;
 
@@ -54,7 +54,7 @@ router.delete("/backend/deleteTask/:id", async (req, res) => {
 });
 
 // rota patch para alterar tarefa no banco de dados
-router.patch("/backend/editTask/:id", async (req, res) => {
+router.patch("/editTask/:id", async (req, res) => {
     let { descEditada, tituloEditado } = req.body;
     let idClique = req.params.id;
 
