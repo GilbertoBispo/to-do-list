@@ -13,7 +13,7 @@ function deleteTask() {
             // envia evento pro backend através do objeto "clique"
             $.ajax({
 
-                url: `/backend/deleteTask/${clique.idTask}`,
+                url: `https://to-do-list-one-gamma-31.vercel.app/backend/deleteTask/${clique.idTask}`,
                 type: "DELETE",
                 contentType: "application/json",
                 data: JSON.stringify(clique),
@@ -78,7 +78,7 @@ function editTask() {
                 // requisição AJAX para enviar esses dados pro backend
                 $.ajax({
     
-                    url: `/backend/editTask/${edicao.idClique}`,
+                    url: `https://to-do-list-one-gamma-31.vercel.app/backend/editTask/${edicao.idClique}`,
                     type: "PATCH",
                     contentType: "application/json",
                     data: JSON.stringify(edicao),
