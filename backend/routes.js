@@ -16,7 +16,7 @@ router.get("/tarefas", async (req, res) => {
 // método POST para receber as informações vindas do formulário no frontend
 // a URL no primeiro parâmetro precisa ser a mesma indicada no atributo "action" da tag "form"
 
-router.post("/", (req, res) => {
+router.post("/addTask", (req, res) => {
 
     // esse destructuring precisa ter as variáveis iguais aos valores dos atributos "name" nos <input> do HTML
     let { tarefa, descricao } = req.body;

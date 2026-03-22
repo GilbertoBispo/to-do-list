@@ -13,7 +13,7 @@ function deleteTask() {
             // envia evento pro backend através do objeto "clique"
             $.ajax({
 
-                url: `http://localhost:3000/deleteTask/${clique.idTask}`,
+                url: `http://localhost:3000/api/deleteTask/${clique.idTask}`,
                 type: "DELETE",
                 contentType: "application/json",
                 data: JSON.stringify(clique),
@@ -78,7 +78,7 @@ function editTask() {
                 // requisição AJAX para enviar esses dados pro backend
                 $.ajax({
     
-                    url: `http://localhost:3000/editTask/${edicao.idClique}`,
+                    url: `http://localhost:3000/api/editTask/${edicao.idClique}`,
                     type: "PATCH",
                     contentType: "application/json",
                     data: JSON.stringify(edicao),

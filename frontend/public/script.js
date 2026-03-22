@@ -7,7 +7,7 @@ let tarefasList = $(".lista");
 
 // função principal
 async function carregarTarefas() {
-    let tarefas = await fetch("http://localhost:3000/tarefas");
+    let tarefas = await fetch("/tarefas");
     
     let tarefasData = await tarefas.json();
     
@@ -63,20 +63,20 @@ async function carregarTarefas() {
                 editTaskDiv.toggleClass("edit-task hidden-edit-task");
                 
             });
+        
+        // chamada de funções externas
+        funcoes.deleteTask();
+        funcoes.editTask();
+        funcoes.filtro()
             
-            // chamada de funções externas
-            funcoes.deleteTask();
-            funcoes.editTask();
-            funcoes.abrirMenu();
-            funcoes.filtro()
-            
-        } catch(e) {
-            console.log(e);
+    } catch(e) {
+        console.log(e);
     }
 }
-
-
+    
+    
 // funcionalidade para adicionar tarefas
+funcoes.abrirMenu();
 
 let adicionarTarefa = $(".nova-tarefa");
 let formTarefas = $(".hidden-adicionar-tarefa");
