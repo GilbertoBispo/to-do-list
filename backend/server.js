@@ -8,7 +8,7 @@ import cors from "cors";
 const app = express();
 //const port = 3000;
 
-app.use("/api", router);
+app.use(router);
 app.use(cors())
 // permite que a API receba e entenda JSON
 app.use(express.json());
