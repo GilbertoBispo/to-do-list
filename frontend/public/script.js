@@ -7,7 +7,7 @@ let tarefasList = $(".lista");
 
 // função principal
 async function carregarTarefas() {
-    let tarefas = await fetch("/api/tarefas");
+    let tarefas = await fetch("/backend/tarefas");
     
     let tarefasData = await tarefas.json();
     
