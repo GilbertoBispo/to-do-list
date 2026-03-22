@@ -19,13 +19,10 @@ app.use(router)
 // ao especificar o caminho relativo da pasta onde estão os arquivos do frontend, precisamos separar cada etapa do caminho com vírgulas
 app.use(express.static(path.join(import.meta.dirname, "../", "frontend", "public")));
 
-
-
-
-
-// iniciando servidor
+/* iniciando servidor
 app.listen(port, () => {
     console.log("executando servidor.");
 });
+*/
 
 export default app;
