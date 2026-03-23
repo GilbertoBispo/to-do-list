@@ -4,6 +4,7 @@ import queryTasks from "./funcoes.js";
 const router = express.Router();
 
 // rota GET para exibir tarefas numa div no frontend
+
 router.get("/tarefas", async (req, res) => {
     try {
         const tarefas = await queryTasks();
