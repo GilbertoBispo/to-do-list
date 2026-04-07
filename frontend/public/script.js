@@ -7,7 +7,7 @@ let tarefasList = $(".lista");
 
 // função principal
 async function carregarTarefas() {
-    let tarefas = await fetch("https://to-do-list-one-gamma-31.vercel.app/api/tarefas");
+    let tarefas = await fetch("http://localhost:3000/api/tarefas");
     
     let tarefasData = await tarefas.json();
     
